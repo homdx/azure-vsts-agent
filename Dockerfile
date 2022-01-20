@@ -43,7 +43,7 @@ RUN apt update && apt-get install \
   $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null && apt-get update && sudo apt-get install docker-ce docker-ce-cli containerd.io && docker --version && rm -rf /var/lib/apt/lists/*
 
 ENV DOTNET_CLI_TELEMETRY_OPTOUT=0
-
+ENV AZP_AGENT_DOWNGRADE_DISABLED=true
 #Added support for latest Nexus Sonatype (this required Net Core 3.1+)
 
 RUN apt update && apt install wget curl && wget https://packages.microsoft.com/config/ubuntu/16.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb && dpkg -i packages-microsoft-prod.deb && rm -v packages-microsoft-prod.deb &&    apt-get update && apt-get install -y apt-transport-https && DOTNET_CLI_TELEMETRY_OPTOUT=0 apt-get install -y dotnet-sdk-3.1 dotnet-sdk-2.1 && rm -rf /var/lib/apt/lists/*
