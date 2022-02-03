@@ -58,6 +58,8 @@ RUN apt-get update  && apt-get install -y --no-install-recommends  unzip   maven
 RUN curl -sL https://services.gradle.org/distributions/gradle-4.6-bin.zip -o gradle-4.6.zip  && unzip -d /usr/share gradle-4.6.zip  && ln -s /usr/share/gradle-4.6/bin/gradle /usr/bin/gradle  && rm gradle-4.6.zip
 RUN apt-get update  && apt-get install -y --no-install-recommends     ant     ant-optional  && rm -rf /var/lib/apt/lists/*
 
+RUN curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash - && apt update && apt install nodejs -y && rm -rf /var/lib/apt/lists/* && node --version && python --version && npm --version && /usr/bin/python2 --version
+
 # Add Tini
 ENV TINI_VERSION v0.19.0
 ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
@@ -65,4 +67,5 @@ RUN export sum=8053cc21a3a9bdd6042a495349d1856ae8d3b3e7664c9654198de0087af031f5d
    && sha512sum /tini && set -ex && echo "${sum}  /tini" | sha512sum -c 
 RUN chmod +x /tini
 COPY ./start.sh .
+#RUN whereis python
 ENTRYPOINT ["/tini", "--", "./start.sh"]
