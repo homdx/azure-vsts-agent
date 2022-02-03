@@ -50,7 +50,7 @@ ENV DOTNET_CLI_TELEMETRY_OPTOUT=0
 ENV AZP_AGENT_DOWNGRADE_DISABLED=true
 #Added support for latest Nexus Sonatype (this required Net Core 3.1+)
 
-RUN export DOTNET_CLI_TELEMETRY_OPTOUT=0 && wget https://packages.microsoft.com/config/ubuntu/16.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb && dpkg -i packages-microsoft-prod.deb && rm -v packages-microsoft-prod.deb &&    apt-get update && apt-get install -y apt-transport-https && DOTNET_CLI_TELEMETRY_OPTOUT=0 apt-get install -y dotnet-sdk-3.1 dotnet-sdk-2.1 && rm -rf /var/lib/apt/lists/*
+RUN export DOTNET_CLI_TELEMETRY_OPTOUT=0 && wget https://packages.microsoft.com/config/ubuntu/16.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb && dpkg -i packages-microsoft-prod.deb && rm -v packages-microsoft-prod.deb &&    apt-get update && apt-get install -y apt-transport-https && DOTNET_CLI_TELEMETRY_OPTOUT=0 apt-get install -y dotnet-sdk-3.1 dotnet-sdk-2.1 dotnet-sdk-2.2 && rm -rf /var/lib/apt/lists/*
 
 ENV ANT_HOME=/usr/share/ant GRADLE_HOME=/usr/share/gradle M2_HOME=/usr/share/maven 
 
