@@ -30,7 +30,7 @@ RUN curl -LsS https://aka.ms/InstallAzureCLIDeb | bash \
   && rm -rf /var/lib/apt/lists/*
 
 ARG TARGETARCH=amd64
-ARG AGENT_VERSION=2.196.2
+ARG AGENT_VERSION=2.198.3
 
 WORKDIR /azp
 RUN if [ "$TARGETARCH" = "amd64" ]; then \
